@@ -107,4 +107,4 @@ class Caliper(CMakePackage):
     @property
     def libs(self):
         return find_libraries(
-            ['caliper', 'caliper-mpi'], root=self.prefix, recursive=True)
+            ['libcaliper', 'libcaliper-mpi'], root=self.prefix, recursive=True)
