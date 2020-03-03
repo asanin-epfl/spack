@@ -42,7 +42,9 @@ class NeurodamusModel(SimModel):
     # and we must bring their dependencies.
     depends_on('zlib')  # for hdf5
 
-    phases = ['setup_common_mods', 'build_model', 'merge_hoc_mod', 'build', 'install']
+    phases = [
+        'setup_common_mods', 'build_model', 'merge_hoc_mod', 'build', 'install'
+    ]
 
     def setup_common_mods(self, spec, prefix):
         """Setup common mod files if provided through variant.
@@ -67,7 +69,6 @@ class NeurodamusModel(SimModel):
         so that incremental builds can actually happen.
         """
         core_prefix = spec['neurodamus-core'].prefix
-
 
         # If we shall build mods for coreneuron,
         # only bring from core those specified
