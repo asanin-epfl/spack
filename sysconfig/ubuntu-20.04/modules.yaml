@@ -27,43 +27,37 @@ modules:
     verbose: True
     hash_length: 0
     whitelist:
-      - arm-forge
-      - blender
-      - cmake
-      - cuda
-      - cudnn
-      - darshan-runtime
-      - darshan-util
-      - doxygen
-      - emacs
-      - ffmpeg
-      - git
-      - graphviz
-      - hpctoolkit
-      - hpe-mpi
-      - ior
-      - imb
-      - intel-mpi
-      - ispc
-      - likwid
-      - lmod
-      - mvapich2
-      - openmpi
-      - osu-micro-benchmarks
-      - stat
-      - valgrind
+      - brainbuilder
+      - brayns
+      - connectome-tools
+      - functionalizer
+      - 'neurodamus%intel'
+      #- 'neuron+mpi%intel'
+      - neurodamus-hippocampus
+      - neurodamus-neocortex
+      - neurodamus-thalamus
+      - parquet-converters
+      - placement-algorithm
+      - psp-validation
+      - py-basalt
+      - py-bluepymm
+      - py-bluepyopt
+      - py-efel
+      - py-pytouchreader
+      - spykfunc
+      - 'synapsetool%gcc'
+      - steps
+      - touchdetector
     blacklist:
       - '%gcc'
       - '%intel'
       - '%clang'
       - '%pgi'
     naming_scheme: '${PACKAGE}/${VERSION}'
-    likwid@:4.3.1:
-      environment:
-        set:
-          KMP_INIT_AT_FORK: 'FALSE'
     all:
       autoload: 'all'
+      suffixes:
+        '+mpi': 'parallel'
       environment:
         set:
           '${PACKAGE}_ROOT': '${PREFIX}'
