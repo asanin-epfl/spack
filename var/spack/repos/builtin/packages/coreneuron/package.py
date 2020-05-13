@@ -48,7 +48,7 @@ class Coreneuron(CMakePackage):
     depends_on('flex', type='build')
     depends_on('mpi', when='+mpi')
     depends_on('reportinglib', when='+report')
-    depends_on('libsonata', when='+report')
+    depends_on('libsonatareport', when='+report')
     depends_on('reportinglib+profile', when='+report+profile')
     depends_on('tau', when='+profile')
 

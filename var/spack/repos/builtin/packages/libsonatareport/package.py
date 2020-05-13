@@ -6,7 +6,7 @@
 from spack import *
 
 
-class Libsonata(CMakePackage):
+class Libsonatareport(CMakePackage):
     """
     `libsonata` provides C++ API for reading SONATA Nodes / Edges
 
@@ -14,8 +14,10 @@ class Libsonata(CMakePackage):
     https://github.com/AllenInstitute/sonata/blob/master/docs/SONATA_DEVELOPER_GUIDE.md
     """
     homepage = "https://github.com/BlueBrain/libsonata"
+    # Using my fork for testing
     git = "https://github.com/BlueBrain/libsonata.git"
 
+    version('reports', branch='reports', preferred=True, submodules=True, get_full_repo=True)
     version('develop', branch='master', submodules=False, get_full_repo=True)
     version('0.1.2', tag='v0.1.2', submodules=False, get_full_repo=True)
     version('0.1.0', tag='v0.1.0', submodules=False, get_full_repo=True)
@@ -34,7 +36,8 @@ class Libsonata(CMakePackage):
 
     def cmake_args(self):
         result = [
-            '-DEXTLIB_FROM_SUBMODULES=OFF',
+            '-DEXTLIB_FROM_SUBMODULES=ON',
+            '-DREPORTS_ONLY=ON',
         ]
         if self.spec.satisfies('+mpi'):
             result.extend([
@@ -44,5 +47,20 @@ class Libsonata(CMakePackage):
                 '-DCMAKE_CXX_COMPILER:STRING={0}'.format(
                     self.spec['mpi'].mpicxx
                 ),
+                '-DREPORTS_ENABLE_MPI=ON',
             ])
         return result
+
+    @property
+    def libs(self):
+        """Export the libsonata library.
+        Sample usage: spec['libsonata'].libs.ld_flags
+        """
+        search_paths = [[self.prefix.lib64, False], [self.prefix.lib, False]]
+        is_shared = '+shared' in self.spec
+        for path, recursive in search_paths:
+            libs = find_libraries(['libsonata', 'libsonatareport'], root=path,
+                                  shared=True, recursive=False)
+            if libs:
+                return libs
+        return None

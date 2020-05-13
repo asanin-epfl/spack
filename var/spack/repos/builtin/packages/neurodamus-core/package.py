@@ -20,7 +20,7 @@ class NeurodamusCore(SimModel):
     git      = "ssh://bbpcode.epfl.ch/sim/neurodamus-core"
 
     version('develop', branch='master', get_full_repo=False)
-    version('sonata_reports', branch='sandbox/jblanco/sonata_reports', get_full_repo=False)
+    version('sonata_reports', branch='sandbox/jblanco/sonata_reports', get_full_repo=False, preferred=True)
     version('2.10.0', tag='2.10.0', get_full_repo=False)
     version('2.9.3', tag='2.9.3', get_full_repo=False)
     version('2.9.2', tag='2.9.2', get_full_repo=False)
@@ -53,7 +53,7 @@ class NeurodamusCore(SimModel):
     depends_on("hdf5+mpi", when='+hdf5+mpi')
     depends_on("hdf5~mpi", when='+hdf5~mpi')
     depends_on('reportinglib',         when='+reportinglib')
-    depends_on('libsonata',            when='+reportinglib')
+    depends_on('libsonatareport',      when='+reportinglib')
     depends_on('reportinglib+profile', when='+reportinglib+profile')
     depends_on('synapsetool',          when='+synapsetool')
     depends_on('py-mvdtool',           when='+mvdtool', type='run')
