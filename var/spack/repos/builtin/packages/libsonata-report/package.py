@@ -6,7 +6,7 @@
 from spack import *
 
 
-class Libsonatareport(CMakePackage):
+class LibsonataReport(CMakePackage):
     """
     `libsonata` provides C++ API for reading SONATA Nodes / Edges
 

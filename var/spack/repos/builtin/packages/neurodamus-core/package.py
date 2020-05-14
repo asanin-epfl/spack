@@ -23,7 +23,7 @@ class NeurodamusCore(SimModel):
     version('sonata_reports', branch='sandbox/jblanco/sonata_reports', get_full_repo=False, preferred=True)
     version('2.10.0', tag='2.10.0', get_full_repo=False)
     version('2.9.3', tag='2.9.3', get_full_repo=False)
-    version('2.9.2', tag='2.9.2', get_full_repo=False, preferred=True)
+    version('2.9.2', tag='2.9.2', get_full_repo=False)
     version('2.9.1', tag='2.9.1', get_full_repo=False)
     version('2.9.0', tag='2.9.0', get_full_repo=False)
     version('2.8.0', tag='2.8.0', get_full_repo=False)
@@ -41,7 +41,7 @@ class NeurodamusCore(SimModel):
     variant('mpi',    default=True,  description="Enable MPI support")
     variant('common', default=False, description="Bring in common synapse mechanisms")
     variant('hdf5',   default=True,  description="Enable old Hdf5 reader")
-    variant('reportinglib', default=True, description="Enable ReportingLib")
+    variant('report', default=True, description="Enable SONATA and binary reporting")
     variant('synapsetool',  default=True, description="Enable SynapseTool reader (for edges)")
     variant('mvdtool',      default=True, description="Enable MVDTool reader (for nodes)")
     # NOTE: Several variants / dependencies come from SimModel
@@ -52,9 +52,9 @@ class NeurodamusCore(SimModel):
     depends_on("mpi",  when='+mpi', type=('build', 'run'))
     depends_on("hdf5+mpi", when='+hdf5+mpi')
     depends_on("hdf5~mpi", when='+hdf5~mpi')
-    depends_on('reportinglib',         when='+reportinglib')
-    depends_on('libsonatareport',      when='+reportinglib')
-    depends_on('reportinglib+profile', when='+reportinglib+profile')
+    depends_on('reportinglib',         when='+repot')
+    depends_on('libsonata-report',      when='+report')
+    depends_on('reportinglib+profile', when='+report+profile')
     depends_on('synapsetool',          when='+synapsetool')
     depends_on('py-mvdtool',           when='+mvdtool', type='run')
     # If external & static, we must bring their dependencies.
@@ -108,7 +108,7 @@ class NeurodamusCore(SimModel):
         variant_to_compile_flag = {
             "~mpi": "-DDISABLE_MPI",
             "~hdf5": "-DDISABLE_HDF5",
-            "~reportinglib": "-DDISABLE_REPORTINGLIB",
+            "~report": "-DDISABLE_REPORTINGLIB",
             "+synapsetool": "-DENABLE_SYNTOOL"
         }
 

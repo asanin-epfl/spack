@@ -32,7 +32,7 @@ class Coreneuron(CMakePackage):
     variant('mpi', default=True, description="Enable MPI support")
     variant('openmp', default=False, description="Enable OpenMP support")
     variant('profile', default=False, description="Enable profiling using Tau")
-    variant('report', default=True, description="Enable reports using ReportingLib")
+    variant('report', default=True, description="Enable SONATA and binary reports")
     variant('shared', default=True, description="Build shared library")
     variant('tests', default=False, description="Enable building tests")
 
@@ -51,7 +51,7 @@ class Coreneuron(CMakePackage):
     depends_on('flex', type='build')
     depends_on('mpi', when='+mpi')
     depends_on('reportinglib', when='+report')
-    depends_on('libsonatareport', when='+report')
+    depends_on('libsonata-report', when='+report')
     depends_on('reportinglib+profile', when='+report+profile')
     depends_on('tau', when='+profile')
 
