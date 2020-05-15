@@ -57,7 +57,6 @@ class LibsonataReport(CMakePackage):
         Sample usage: spec['libsonata'].libs.ld_flags
         """
         search_paths = [[self.prefix.lib64, False], [self.prefix.lib, False]]
-        is_shared = '+shared' in self.spec
         for path, recursive in search_paths:
             libs = find_libraries(['libsonata', 'libsonatareport'], root=path,
                                   shared=True, recursive=False)
