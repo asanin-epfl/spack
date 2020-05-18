@@ -92,7 +92,7 @@ class Coreneuron(CMakePackage):
                 flags = '-g -xMIC-AVX512 -O2 -qopt-report=5'
         if '+gpu' in spec:
             flags = '-O2'
-            flags += '-Minline=size:1000,levels:100,'
+            flags += ' -Minline=size:1000,levels:100,'
             flags += 'totalsize:40000,maxsize:4000'
             flags += ' -ta=tesla:cuda%s' % (spec['cuda'].version.up_to(2))
         if '+debug' in spec:
