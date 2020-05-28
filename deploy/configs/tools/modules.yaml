@@ -47,6 +47,7 @@ modules:
       - ispc
       - likwid
       - lmod
+      - multi-comp-mesher
       - mvapich2
       - openmpi
       - osu-micro-benchmarks
