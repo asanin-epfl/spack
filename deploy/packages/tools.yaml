@@ -39,7 +39,7 @@ packages:
       - help2man@1.47.4
       - hpctoolkit
       - hpe-mpi@2.21
-      - intel-mpi@2018.1.163
+      - intel-mpi@2019.5.281
       - isl@0.18
       - ispc@1.10.0
       - m4@1.4.18
