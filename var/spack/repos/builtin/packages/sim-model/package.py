@@ -89,8 +89,9 @@ class SimModel(Package):
         # Neuron mechlib and special
         with profiling_wrapper_on():
             link_flag += ' -L{0} -Wl,-rpath,{0}'.format(str(self.prefix.lib))
-            which('nrnivmodl')('-incflags', include_flag, '-loadflags',
-                               link_flag, mods_location)
+            which('nrnivmodl')('-incflags', include_flag,
+                               '-loadflags', link_flag,
+                               mods_location)
 
         assert os.path.isfile(os.path.join(output_dir, 'special'))
         return include_flag, link_flag
@@ -193,6 +194,9 @@ class SimModel(Package):
 
     def _setup_build_environment_common(self, env):
         env.unset('LC_ALL')
+        # MPI flags should be the same as run environment, i.e. no wrappers
+        if 'mpi' in self.spec:
+            self.spec['mpi'].package.setup_run_environment(env)
 
     def _setup_run_environment_common(self, env):
         # Dont export /lib as an ldpath.
