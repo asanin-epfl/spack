@@ -12,7 +12,6 @@ import llnl.util.tty as tty
 # Definitions
 _CORENRN_MODLIST_FNAME = "coreneuron_modlist.txt"
 _BUILD_NEURODAMUS_FNAME = "build_neurodamus.sh"
-_LIB_SUFFIX = "_nd"
 
 
 class NeurodamusModel(SimModel):
@@ -28,7 +27,7 @@ class NeurodamusModel(SimModel):
     # and dont rpath it so we stay dynamic.
     # 'run' mode will load the same mpi module
     depends_on("mpi", type=('build', 'run'))
-    depends_on('neurodamus-core', type='build')
+    depends_on('neurodamus-core', type=('build', 'run'))
     depends_on('neurodamus-core@develop', type='build', when='@develop')
     depends_on("hdf5+mpi")
     depends_on('reportinglib')
@@ -93,7 +92,9 @@ class NeurodamusModel(SimModel):
         # link_flag += ' '
         #         + spec['synapsetool'].package.dependency_libs(spec).joined()
 
-        self.mech_name += _LIB_SUFFIX  # Final lib name
+        # Create the library with all the mod files as libnrnmech.so/.dylib
+        self.mech_name = ''
+
         if spec.satisfies('+synapsetool'):
             base_include_flag = "-DENABLE_SYNTOOL"
         else:
@@ -153,7 +154,7 @@ class NeurodamusModel(SimModel):
             #  - NRNMECH_LIB_PATH the combined lib (used by neurodamus-py)
             #  - BGLIBPY_MOD_LIBRARY_PATH is the pure mechanism
             #        (used by bglib-py)
-            if '_nd.' in libnrnmech_name:
+            if 'libnrnmech.' in libnrnmech_name:
                 env.set('NRNMECH_LIB_PATH', libnrnmech_name)
             else:
                 env.set('BGLIBPY_MOD_LIBRARY_PATH', libnrnmech_name)

@@ -21,6 +21,7 @@ class NeurodamusCore(SimModel):
 
     version('develop', branch='master', get_full_repo=False)
     version('sonata_reports', branch='sandbox/jblanco/sonata_reports', get_full_repo=False, preferred=True)
+    version('2.10.1', tag='2.10.1', get_full_repo=False)
     version('2.10.0', tag='2.10.0', get_full_repo=False)
     version('2.9.3', tag='2.9.3', get_full_repo=False)
     version('2.9.2', tag='2.9.2', get_full_repo=False)

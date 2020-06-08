@@ -18,7 +18,7 @@ packages:
       - compiler
       - architecture
     specs:
-      - arm-forge@19.0.4-linux-rhel7-x86_64
+      - arm-forge@20.0.3-linux-rhel7-x86_64
       - binutils@2.31.1
       - bison@3.0.5
       - blender
@@ -27,7 +27,7 @@ packages:
       - darshan-util
       - doxygen@1.8.15
       - emacs@26.1
-      - environment-modules@3.2.10
+      - environment-modules@4.5.1
       - ffmpeg
       - flex@2.6.3
       - gdb~python@8.2
