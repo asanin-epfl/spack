@@ -18,8 +18,7 @@ class Coreneuron(CMakePackage):
     url      = "https://github.com/BlueBrain/CoreNeuron"
     git      = "https://github.com/BlueBrain/CoreNeuron"
 
-    version('develop', branch='master', submodules=True)
-    version('sonata_reports', branch='reporting_api_changes', preferred=True, submodules=True)
+    version('develop', branch='master', submodules=True, preferred=True)
     version('0.18', tag='0.18', submodules=True)
     version('0.17', tag='0.17', submodules=True)
     version('0.16', tag='0.16', submodules=True)

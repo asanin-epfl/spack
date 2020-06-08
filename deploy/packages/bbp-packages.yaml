@@ -164,11 +164,7 @@ packages:
       - mpi
       - python
     specs:
-<<<<<<< HEAD
       - neurodamus-core~common@sonata_reports
-=======
-      - neurodamus-core~common@2.10.1
->>>>>>> develop
       - neurodamus-neocortex+coreneuron@0.3
       - neurodamus-hippocampus+coreneuron@0.4
       - neurodamus-thalamus+coreneuron@0.3
