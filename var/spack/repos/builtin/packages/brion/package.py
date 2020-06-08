@@ -45,14 +45,14 @@ class Brion(CMakePackage):
     depends_on('mvdtool ~mpi')
 
     def patch(self):
-        choose_python_path = 'CMake/common/ChoosePython.cmake' \
-            if self.spec.version == Version('3.1.0') \
-            else 'CMake/ChoosePython.cmake'
-        filter_file(r'-py36', r'36 -py36', choose_python_path)
+        if self.spec.version == Version('3.1.0'):
+            filter_file(r'-py36', r'36 -py36', "CMake/common/ChoosePython.cmake")
 
     def cmake_args(self):
         return ['-DBRION_SKIP_LIBSONATA_SUBMODULE=ON',
-                '-DDISABLE_SUBPROJECTS=0N']
+                '-DDISABLE_SUBPROJECTS=0N',
+                '-DBRION_REQUIRE_PYTHON=%s' % ("ON" if "+python" in self.spec \
+                                               else "OFF")]
 
     @when('+python')
     def setup_run_environment(self, env):
