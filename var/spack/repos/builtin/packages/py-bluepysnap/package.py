@@ -38,5 +38,5 @@ class PyBluepysnap(PythonPackage):
     @run_after('install')
     @on_package_attributes(run_tests=True)
     def check_install(self):
-        Executable('bluepysnap --help')()
+        Executable('bluepysnagh --help')()
         # python(join_path(self.prefix.bin, "bluepysnap"), "--help")
