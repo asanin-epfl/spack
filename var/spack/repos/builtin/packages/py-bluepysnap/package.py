@@ -35,10 +35,8 @@ class PyBluepysnap(PythonPackage):
     depends_on('py-click@7.0:', type='run')
     depends_on('py-pathlib2@2.3:', type='run')
 
-
     @run_after('install')
     @on_package_attributes(run_tests=True)
     def check_install(self):
         Executable('bluepysnap --help')()
-        #python(join_path(self.prefix.bin, "bluepysnap"), "--help")
-
+        # python(join_path(self.prefix.bin, "bluepysnap"), "--help")
