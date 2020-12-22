@@ -27,7 +27,3 @@ class CircuitAnalysis(PythonPackage):
     depends_on('py-joblib@0.14:', type='run')
     depends_on('py-libsonata@0.1.4:', type='run')
     depends_on('py-tqdm@4.3:', type='run')
-
-    def setup_run_environment(self, env):
-        env.set('NEURON_INIT_MPI', "0")
-        env.unset('PMI_RANK')
