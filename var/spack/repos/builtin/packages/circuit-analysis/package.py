@@ -6,7 +6,7 @@
 from spack import *
 
 
-class CircuitAnalysis(PythonPackage)
+class CircuitAnalysis(PythonPackage):
     """Pythonic Sonata circuit reduction API"""
 
     homepage = "https://bbpcode.epfl.ch/code/#/admin/projects/nse/circuit-analysis"
@@ -24,7 +24,7 @@ class CircuitAnalysis(PythonPackage)
     depends_on('py-seaborn@0.8:', type='run')
     depends_on('py-bluepy@0.14:0.99', type='run')
     depends_on('py-neurom@1.0:1.5.99', type='run')
-    depends_on('py-joblib@0:14:', type='run')
+    depends_on('py-joblib@0.14:', type='run')
     depends_on('py-libsonata@0.1.4:', type='run')
     depends_on('py-tqdm@4.3:', type='run')
 
