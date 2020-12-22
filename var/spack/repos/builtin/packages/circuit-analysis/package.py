@@ -6,7 +6,7 @@
 from spack import *
 
 
-class CircuitAnalysis(PythonPackage):
+class CircuitAnalysis(PythonPackage)
     """Pythonic Sonata circuit reduction API"""
 
     homepage = "https://bbpcode.epfl.ch/code/#/admin/projects/nse/circuit-analysis"
