@@ -31,4 +31,3 @@ class CircuitAnalysis(PythonPackage):
     def setup_run_environment(self, env):
         env.set('NEURON_INIT_MPI', "0")
         env.unset('PMI_RANK')
-
