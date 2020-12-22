@@ -13,7 +13,7 @@ class PyMinisValidation(PythonPackage):
     git      = "ssh://bbpcode.epfl.ch/nse/minis-validation"
 
     version('develop', branch='master')
-    version('0.0.3', commit='fa5d2a835e6528c24822224a38001d03e0b6330f')
+    version('0.0.3', tag='minis-validation-v0.0.3.dev1')
     version('0.0.2', tag='minis-validation-v0.0.2')
 
     depends_on('py-setuptools', type=('build', 'run'))
