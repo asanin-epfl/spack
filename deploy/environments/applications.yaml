@@ -10,7 +10,6 @@ spack:
     python:
       version: [3.8.3]
   specs:
-    - archngv
     - asciitoh5@1.0
     - brainbuilder
     - brayns@1.0.1%gcc +brion ^brion@3.1.0 ^ospray%intel
@@ -21,6 +20,7 @@ spack:
     - brion@3.1.0 +python
     - brion@3.2.0 +python
     - brion@3.3.0 +python
+    - brion@3.3.1 +python
     - circuit-build
     - connectome-tools@0.3.3
     - emsim ^brion@3.1.0
