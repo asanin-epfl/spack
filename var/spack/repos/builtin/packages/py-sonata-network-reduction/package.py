@@ -44,6 +44,7 @@ class PySonataNetworkReduction(PythonPackage):
     depends_on('py-h5py@2.3:2.99', type='run', when='@:0.1.2')
     depends_on('py-neurom@1.6.0:', type='run', when='@0.1.3:')
     depends_on('py-neurom@1.4.18:1.5.99', type='run', when='@:0.1.2')
+    depends_on('py-dask@2.0:2.21', type='run', when='@0.1.2:')
     depends_on('py-dask-mpi@2.0:2.21', type='run', when='@0.1.2:')
     depends_on('py-distributed@2.0:2.21', type='run', when='@0.1.2:')
 
